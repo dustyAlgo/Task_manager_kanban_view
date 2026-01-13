@@ -1,10 +1,8 @@
-# Byte-compiled / optimized / DLL files
+# Python
 __pycache__/
 *.py[cod]
 *.pyo
 *.pyd
-
-# Distribution / packaging
 .Python
 build/
 dist/
@@ -22,3 +20,24 @@ django_env/
 
 # Environment variables
 .env
+
+# React / Node.js
+frontend/node_modules/
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/.pnp
+frontend/.pnp.js
+frontend/build/
+frontend/coverage/
+frontend/.DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
