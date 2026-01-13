@@ -57,3 +57,86 @@
 
 3. Wrap App with AuthProvider
     src/index.js
+
+## FOLDER STRUCTURE
+ozi_task_app/
+├── .git/
+├── .gitignore
+├── Readme.md
+│
+├── backend/
+│   ├── db.sqlite3
+│   ├── manage.py
+│   ├── backend/
+│   │   ├── __init__.py
+│   │   ├── settings.py
+│   │   ├── urls.py
+│   │   ├── asgi.py
+│   │   ├── wsgi.py
+│   │   └── __pycache__/
+│   ├── tasks/
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── tests.py
+│   │   ├── urls.py
+│   │   ├── views.py
+│   │   ├── migrations/
+│   │   │   └── __init__.py
+│   │   └── __pycache__/
+│   └── users/
+│       ├── __init__.py
+│       ├── admin.py
+│       ├── apps.py
+│       ├── models.py
+│       ├── serializers.py
+│       ├── tests.py
+│       ├── urls.py
+│       ├── views.py
+│       ├── migrations/
+│       │   └── __init__.py
+│       └── __pycache__/
+│
+├── frontend/
+│   ├── .gitignore
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── README.md
+│   ├── node_modules/
+│   ├── public/
+│   └── src/
+│       ├── index.js
+│       ├── index.css
+│       ├── App.js
+│       ├── App.css
+│       ├── App.test.js
+│       ├── logo.svg
+│       ├── reportWebVitals.js
+│       ├── setupTests.js
+│       ├── api/
+│       │   └── axios.js
+│       ├── auth/
+│       │   └── AuthContext.js
+│       ├── components/
+│       │   └── ProtectedRoute.js
+│       └── pages/
+│           ├── Dashboard.js
+│           ├── Login.js
+│           ├── Profile.js
+│           └── Register.js
+│
+└── django_env/
+    ├── pyvenv.cfg
+    ├── Include/
+    ├── Lib/
+    │   └── site-packages/
+    │       ├── django/
+    │       ├── rest_framework/
+    │       ├── rest_framework_simplejwt/
+    │       └── ... (other packages)
+    └── Scripts/
+        ├── activate
+        ├── activate.bat
+        └── Activate.ps1
