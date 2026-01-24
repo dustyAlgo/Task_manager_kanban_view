@@ -1,4 +1,5 @@
 1. AUTHENTICATION IMPLEMENTATION (STEP BY STEP)
+    Test userid - john test1234
     High-level flow:
 
     Register → Login → Get JWT → Access protected routes
