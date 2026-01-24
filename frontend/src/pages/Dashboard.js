@@ -14,32 +14,62 @@ const Dashboard = () => {
   const completedTasks = tasks.filter(t => t.status === "completed");
 
   return (
-    <div style={{ display: "flex", gap: "20px" }}>
-      <Column title="Pending" tasks={pendingTasks} />
-      <Column title="In Progress" tasks={inProgressTasks} />
-      <Column title="Completed" tasks={completedTasks} />
-    </div>
+    <DragDropContext onDragEnd={() => {}}>
+      <div style={{ display: "flex", gap: "20px" }}>
+        <Column title="Pending" droppableId="pending" tasks={pendingTasks} />
+        <Column title="In Progress" droppableId="in_progress" tasks={inProgressTasks} />
+        <Column title="Completed" droppableId="completed" tasks={completedTasks} />
+      </div>
+    </DragDropContext>
   );
 };
 
-const Column = ({ title, tasks }) => {
+
+const Column = ({ title, tasks, droppableId }) => {
   return (
-    <div style={{ width: "30%" }}>
-      <h3>{title}</h3>
-      {tasks.map(task => (
-        <TaskCard key={task.id} task={task} />
-      ))}
-    </div>
+    <Droppable droppableId={droppableId}>
+      {(provided) => (
+        <div
+          ref={provided.innerRef}
+          {...provided.droppableProps}
+          style={{ width: "30%", minHeight: "300px" }}
+        >
+          <h3>{title}</h3>
+
+          {tasks.map((task, index) => (
+            <TaskCard key={task.id} task={task} index={index} />
+          ))}
+
+          {provided.placeholder}
+        </div>
+      )}
+    </Droppable>
   );
 };
 
-const TaskCard = ({ task }) => {
+
+const TaskCard = ({ task, index }) => {
   return (
-    <div style={{ border: "1px solid #ccc", marginBottom: "10px", padding: "8px" }}>
-      <strong>{task.title}</strong>
-      <p>{task.description?.slice(0, 50)}</p>
-      <small>Due: {task.due_date || "N/A"}</small>
-    </div>
+    <Draggable draggableId={task.id.toString()} index={index}>
+      {(provided) => (
+        <div
+          ref={provided.innerRef}
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+          style={{
+            border: "1px solid #ccc",
+            marginBottom: "10px",
+            padding: "8px",
+            background: "#fff",
+            ...provided.draggableProps.style,
+          }}
+        >
+          <strong>{task.title}</strong>
+          <p>{task.description?.slice(0, 50)}</p>
+          <small>Due: {task.due_date || "N/A"}</small>
+        </div>
+      )}
+    </Draggable>
   );
 };
 
